@@ -1,4 +1,7 @@
+package listasSimples;
+
 import java.util.Iterator;
+
 
 public interface ListADT<T> {
 

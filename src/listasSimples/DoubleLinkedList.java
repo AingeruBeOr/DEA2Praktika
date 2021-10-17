@@ -1,5 +1,9 @@
+package listasSimples;
+
+import listasSimples.Node;
+
 import java.util.Iterator;
-import java.util.NoSuchElementException;
+
 
 public class DoubleLinkedList<T> implements ListADT<T> {
 
@@ -29,18 +33,36 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	 */
 	public T removeFirst() {
 		// KODEA OSATU ETA KOSTUA KALKULATU
+		T emaitza=null;
 		if(!this.isEmpty()){ //lista hutsa badago ez da ezer egin behar
-			if(this.size()==1){ //elementu bakarra badago last null-eri begiratu
+			emaitza=last.next.data;
+			if(count==1){ //elementu bakarra badago last null-eri begiratu
 				this.last=null;
+			}else{
+				Node<T> unekoa= last.next.next;
+				last.next=unekoa;
+				unekoa.prev=last;
 			}
-			//TODO
-		}
+			count--;	//count atrib eguneratu
+		}return emaitza;
 	}
 
 	public T removeLast() {
-	// listako azken elementua kendu da
-	// Aurrebaldintza: 
 		// KODEA OSATU ETA KOSTUA KALKULATU
+		T emaitza=null;
+		if (!this.isEmpty()) {
+			emaitza=last.data;
+			if (count == 1) { //elementu bakarra badago last null-eri begiratu
+				this.last = null;
+			} else {
+				Node<T> aurrekoa = last.prev;
+				last.next.prev = aurrekoa;
+				aurrekoa.next = last.next;
+				last = aurrekoa;    //last eguneratu
+			}
+			count--; //count atrib eguneratu
+		}
+		return emaitza;
     }
 
 
@@ -53,6 +75,22 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	 */
 	public T remove(T elem) {
 		// KODEA OSATU ETA KOSTUA KALKULATU
+		Node<T> unekoa=last.next;
+		Node<T> aurrekoa;
+		if (!this.contains(elem)){
+			return null;
+		}else{
+			while (!unekoa.data.equals(elem)) {
+				unekoa = unekoa.next;
+			}if (unekoa==last) {
+				this.removeLast();
+			}else {
+				aurrekoa = unekoa.prev;
+				unekoa.next.prev=aurrekoa;
+				aurrekoa.next=unekoa.next;
+				return unekoa.data;
+			}
+		}
 	}
 
 	/**
@@ -77,14 +115,36 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public boolean contains(T elem) {
 	// Egiazkoa bueltatuko du aurkituz gero, eta false bestela
-		      if (isEmpty())
-		          return false;
-
+		      if (isEmpty() || elem == null) {
+				  return false;
+			  }else{
+				  Node<T> unekoa= last;
+				  boolean barruan=false;
+				  while (unekoa!=last || !barruan){
+					  barruan=true;
+					  if(unekoa.data.equals(elem)){
+						  return true;
+					  }
+					 unekoa=unekoa.next;
+				  }
+				  if (unekoa==last && barruan){		//elem ez badago
+					  return false;
+				  }
+			  }
 		      		// KODEA OSATU ETA KOSTUA KALKULATU
 		   }
 
 	public T find(T elem) {
-	// Elementua bueltatuko du aurkituz gero, eta null bestela
+		// Elementua bueltatuko du aurkituz gero, eta null bestela
+		Node<T> unekoa=last.next;
+		if (!contains(elem)){	//elem ez badago
+			return null;
+		}else{
+			while (!unekoa.data.equals(elem)) {
+				unekoa = unekoa.next;
+			}return unekoa.data;
+		}
+
 
 		// KODEA OSATU ETA KOSTUA KALKULATU
 	}
@@ -116,7 +176,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				T elem = it.next();
 				result = result + "[" + elem.toString() + "] \n";
 			}	
-			return "DoubleLinkedList " + result + "]";
+			return "listasSimples.DoubleLinkedList " + result + "]";
 		}
 
 }

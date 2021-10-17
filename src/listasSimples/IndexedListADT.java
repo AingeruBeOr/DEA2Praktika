@@ -1,5 +1,7 @@
+package listasSimples;
+
 /**
- * IndexedListADT defines the interface to an indexed list collection. Elements
+ * listasSimples.IndexedListADT defines the interface to an indexed list collection. Elements
  * are referenced by contiguous numeric indexes.
  * @author Dr. Lewis
  * @author Dr. Chase
