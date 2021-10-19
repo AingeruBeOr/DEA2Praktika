@@ -77,20 +77,22 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// KODEA OSATU ETA KOSTUA KALKULATU
 		Node<T> unekoa=last.next;
 		Node<T> aurrekoa;
-		if (!this.contains(elem)){
-			return null;
-		}else{
+		T emaitza=null;
+		if (this.contains(elem)){
 			while (!unekoa.data.equals(elem)) {
 				unekoa = unekoa.next;
 			}if (unekoa==last) {
+				emaitza=last.data;
 				this.removeLast();
 			}else {
+				emaitza= unekoa.data;
 				aurrekoa = unekoa.prev;
 				unekoa.next.prev=aurrekoa;
 				aurrekoa.next=unekoa.next;
-				return unekoa.data;
 			}
+			count--;
 		}
+		return emaitza;
 	}
 
 	/**
@@ -115,37 +117,36 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public boolean contains(T elem) {
 	// Egiazkoa bueltatuko du aurkituz gero, eta false bestela
-		      if (isEmpty() || elem == null) {
-				  return false;
-			  }else{
+		boolean emaitza=false;
+		      if (!isEmpty() && elem != null) {
 				  Node<T> unekoa= last;
 				  boolean barruan=false;
 				  while (unekoa!=last || !barruan){
 					  barruan=true;
 					  if(unekoa.data.equals(elem)){
-						  return true;
+						  emaitza= true;
 					  }
 					 unekoa=unekoa.next;
 				  }
-				  if (unekoa==last && barruan){		//elem ez badago
+				  /*if (unekoa==last && barruan){		//elem ez badago
 					  return false;
-				  }
+				  }*/              // TODO No hace falta, no?
 			  }
+			  return emaitza;
 		      		// KODEA OSATU ETA KOSTUA KALKULATU
 		   }
 
 	public T find(T elem) {
 		// Elementua bueltatuko du aurkituz gero, eta null bestela
 		Node<T> unekoa=last.next;
-		if (!contains(elem)){	//elem ez badago
-			return null;
-		}else{
+		T emaitza=null;
+		if (contains(elem)){	//elem ez badago
 			while (!unekoa.data.equals(elem)) {
 				unekoa = unekoa.next;
-			}return unekoa.data;
+			}
+			emaitza=unekoa.data;
 		}
-
-
+		return emaitza;
 		// KODEA OSATU ETA KOSTUA KALKULATU
 	}
 
