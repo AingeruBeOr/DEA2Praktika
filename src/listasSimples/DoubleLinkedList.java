@@ -158,9 +158,18 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	   public Iterator<T> iterator() { return new ListIterator(); } 
 
 	   // an iterator, doesn't implement remove() since it's optional 
-	   private class ListIterator implements Iterator<T> { 
+	   private class ListIterator implements Iterator<T> {
+		   @Override
+		   public boolean hasNext() {
+			   return false;
+		   }
 
-		// KODEA OSATU 
+		   @Override
+		   public T next() {
+			   return null;
+		   }
+
+		   // KODEA OSATU
 	   } // private class
 		
 		
