@@ -37,10 +37,20 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 
 	public void merge(DoubleLinkedList<T> zerrenda){
 		// KODEA OSATU ETA KOSTUA KALKULATU
-
+		mergeSort(zerrenda, 0, zerrenda.count-1);
+	}
+	private void mergeSort(DoubleLinkedList<T> z, int hasiera, int bukaera){
+		if (hasiera<bukaera){
+			mergeSort(z, hasiera, (hasiera+bukaera)/2);
+			mergeSort(z, ((hasiera+bukaera)/2)+1, bukaera);
+			bateratze(z, hasiera, (hasiera+bukaera)/2, bukaera);
+		}
+	}
+	private void bateratze(DoubleLinkedList<T> z, int i, int erdikoa, int f) {
+		DoubleLinkedList<T> bateratua = new DoubleLinkedList<T>();
+		DoubleLinkedList<T> eskuin = new DoubleLinkedList<T>();
 
 
 	}
-
 
 }
