@@ -46,11 +46,35 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 			bateratze(z, hasiera, (hasiera+bukaera)/2, bukaera);
 		}
 	}
-	private void bateratze(DoubleLinkedList<T> z, int i, int erdikoa, int f) {
-		DoubleLinkedList<T> bateratua = new DoubleLinkedList<T>();
-		DoubleLinkedList<T> eskuin = new DoubleLinkedList<T>();
-
-
+	private void bateratze(DoubleLinkedList<T> z, int i, int erdikoa, int f){
+		DoubleLinkedList<T> bateratua=new DoubleLinkedList<T>();
+		DoubleLinkedList<T> eskuin=new DoubleLinkedList<T>();
+		Node<T> pos=z.last.next;
+		for(int j=0; j<=erdikoa; j++){
+			pos=pos.next;
+		}
+		Node<T> gorde=pos.prev;
+		Node<T> berria=new Node<>(pos.data);
+		eskuin.last=berria;
+		pos=pos.next;
+		while(pos!=null){
+			berria=new Node<>(pos.data);
+			berria.prev= eskuin.last;
+			berria.next=last.next;
+			last.next=berria;
+			berria.next.prev=berria;
+			last=berria;
+			pos=pos.next;
+		}
+		z.last.next.prev=gorde;
+		gorde.next= z.last.next;
+		gorde=z.last;
+		int eskuin=erdikoa+1;
+		int k=0; //bateratua taula betetzeko indizea
+		while(ezker<=erdikoa &&eskuin<=f){
+			if(z)
+		}
 	}
+
 
 }
