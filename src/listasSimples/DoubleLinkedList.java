@@ -201,7 +201,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				T elem = it.next();
 				result = result + "[" + elem.toString() + "] \n";
 			}	
-			return "listasSimples.DoubleLinkedList " + result + "]";
+			return "DoubleLinkedList " + result + "]";
 		}
 
 }

@@ -6,9 +6,9 @@ public class Node<T> {
 		public Node<T> prev; 	// puntero al anterior nodo de la lista
 		// -------------------------------------------------------------
 
-		public Node(T dd) 		// constructor
+		public Node(T dataa) 		// constructor
 		{
-			data = dd;
+			data = dataa;
 			next = null;
 			prev = null;
 		}
