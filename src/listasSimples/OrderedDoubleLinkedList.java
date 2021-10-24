@@ -22,7 +22,7 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 					pasa=true;
 					unekoa=unekoa.next;
 				}
-				if (unekoa==last && pasa){	//azken posizioan sartu behar
+				if (unekoa==last && unekoa.data.compareTo(elem) <=0){	//azken posizioan sartu behar //last-elem-unekoa
 					aurrekoa=unekoa;
 					unekoa=unekoa.next;	//first dagoen elem hartu
 					last=berria;
@@ -45,18 +45,17 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 	 */
 	public void merge(DoubleLinkedList<T> zerrenda) {
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		//TODO ondo dago??????
 		if(!zerrenda.isEmpty()){
 			if (last != null) {
 				Node<T> unekoaParam = zerrenda.last.next;
 				Node<T> unekoa = last.next;
 				boolean bukatu=false;
 				while(!bukatu){
-					while (unekoaParam.data.compareTo(unekoa.data) <= 0 && unekoa != last) {
+					while (unekoaParam.data.compareTo(unekoa.data) >= 0 && unekoa != last) {
 						unekoa = unekoa.next;
 					}
 					Node<T> berria = new Node<>(unekoaParam.data);
-					if(unekoa!=last){ //azkeneko elementura heldu bada, elementu guztiak unekoaParam.data baino txikiagoak direla esan nahi du
+					if(unekoa==last && unekoaParam.data.compareTo(unekoa.data) >= 0){ //azkeneko elementura heldu bada, elementu guztiak unekoaParam.data baino txikiagoak direla esan nahi du
 						berria.prev=unekoa;
 						berria.next=unekoa.next;
 						unekoa.next.prev=berria;

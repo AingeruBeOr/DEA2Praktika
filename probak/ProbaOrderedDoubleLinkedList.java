@@ -51,7 +51,7 @@ class PruebaOrderedDoubleLinkedList {
 			System.out.println("7777? " + l2.find(new Pertsona("", "7777")));
 			System.out.println("8888? " + l2.find(new Pertsona("", "8888")));
 
-			System.out.println("\nProba merge ...............");
+			System.out.println("\nProba merge ..............."); //elementu guztiak lista originalaren bi elementuen artean
 			OrderedDoubleLinkedList<Integer> l3 = new OrderedDoubleLinkedList<>();
 			l3.add(3);
 			l3.add(15);
@@ -66,7 +66,42 @@ class PruebaOrderedDoubleLinkedList {
 			l4.adabegiakInprimatu();
 			l3.merge(l4);
 			System.out.println("merge() aplikatu eta gero:");
-			l3.adabegiakInprimatu(); //TODO no funciona
-	}
-	}
+			l3.adabegiakInprimatu();
 
+			System.out.println("\nProba merge 2..............."); //elementuak listaren hasieran, erdian eta amaieran
+			OrderedDoubleLinkedList<Integer> l5 = new OrderedDoubleLinkedList<>();
+			l5.add(10);
+			l5.add(15);
+			l5.add(2);
+			l5.add(5);
+			System.out.println("Hasierako lista:");
+			l5.adabegiakInprimatu();
+			OrderedDoubleLinkedList<Integer> l6 = new OrderedDoubleLinkedList<>();
+			l6.add(6);
+			l6.add(3);
+			l6.add(4);
+			l6.add(1);
+			l6.add(20);
+			System.out.println("Hartuko dituen elementu berriak:");
+			l6.adabegiakInprimatu();
+			l5.merge(l6);
+			System.out.println("merge() aplikatu eta gero:");
+			l5.adabegiakInprimatu();
+
+			System.out.println("\nProba merge 3..............."); //elementuak listaren hasieran, erdian eta amaieran
+			OrderedDoubleLinkedList<Integer> l7 = new OrderedDoubleLinkedList<>();
+			System.out.println("Hasierako lista:");
+			l7.adabegiakInprimatu();
+			OrderedDoubleLinkedList<Integer> l8 = new OrderedDoubleLinkedList<>();
+			l8.add(6);
+			l8.add(3);
+			l8.add(4);
+			l8.add(1);
+			l8.add(20);
+			System.out.println("Hartuko dituen elementu berriak:");
+			l8.adabegiakInprimatu();
+			l7.merge(l8);
+			System.out.println("merge() aplikatu eta gero:");
+			l7.adabegiakInprimatu();
+	}
+}
