@@ -56,5 +56,4 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			System.out.println("Ezin da gehitu."+target+" ez baita existitzen.");
 		}
 	}
-
 }

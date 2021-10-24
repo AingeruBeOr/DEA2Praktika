@@ -161,16 +161,22 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 		   public ListIterator (){
 			   lehenengoAldia = false;
-			   unekoa = last.next;
+			   if(last==null){
+				   unekoa = null;
+			   } else{
+				   unekoa=last.next;
+			   }
 		   }
 
 		   @Override
 		   public boolean hasNext() {
 			   boolean emaitza=true;
-			   if(unekoa == last.next && lehenengoAldia){
+			   if(unekoa==null){
 				   emaitza = false;
 			   }
-			   lehenengoAldia = true;
+			   else if(unekoa == last.next && lehenengoAldia){
+				   emaitza = false;
+			   }
 			   return emaitza;
 		   }
 
@@ -181,6 +187,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			   }
 			   T emaitza = unekoa.data;
 			   unekoa = unekoa.next;
+			   lehenengoAldia = true;
 			   return emaitza;
 		   }
 
@@ -199,9 +206,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			Iterator<T> it = iterator();
 			while (it.hasNext()) {
 				T elem = it.next();
-				result = result + "[" + elem.toString() + "] \n";
+				result = result + "\n[" + elem.toString() + "]";
 			}	
-			return "DoubleLinkedList " + result + "]";
+			return "DoubleLinkedList " + result;
 		}
 
 }
