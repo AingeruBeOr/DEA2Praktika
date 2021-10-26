@@ -22,7 +22,6 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public void setDeskr(String izena) {
 	  this.deskr = izena;
 	}
-
 	public String getDeskr() {
 	  return this.deskr;
 	}
