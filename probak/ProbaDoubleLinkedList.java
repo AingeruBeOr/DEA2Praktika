@@ -26,7 +26,6 @@ public class ProbaDoubleLinkedList {
 		l.addToFront(8);
 		l.remove(7);
 
-
 		System.out.print(" Lista ...............");
 		adabegiakInprimatu(l);
 		System.out.println("Elementu-kopurua: " + l.size());
