@@ -45,23 +45,27 @@ public class ListaAktoreak {
      * Kostu-funtzioa O(n*log_2(n)) izango da; non n, aktoreen kopurua den. Datu kopurua hain handia denez,
      * ezin da erabili O(n^2) kostu funtzioa dute algoritmorik denbora gehiegi behar izango zuketeelako.
      */
-    public OrderedDoubleLinkedList<Aktorea> ordenatuBananBanan(){
-        OrderedDoubleLinkedList<Aktorea> ema=new OrderedDoubleLinkedList<>();
-        Node<Aktorea> unekoa= lista.getLast().next;
-        boolean lehena=true;
-        while(unekoa.next!= lista.getLast().next||lehena){
-            lehena =false;
-            ema.add(unekoa.data);
-            unekoa=unekoa.next;
+
+
+    public void ordenatu(){
+        Iterator<Aktorea> it= this.lista.iterator();
+        Aktorea unekoa;
+        int i=0;
+        Aktorea[] l=new Aktorea[this.lista.size()];
+        while(it.hasNext()){
+            unekoa=it.next();
+            l[i]=unekoa;
+            i++;
         }
-        return ema;
+        quickSort(l,0,l.length-1);
+        UnorderedDoubleLinkedList<Aktorea> ema= new UnorderedDoubleLinkedList<>();
+        for(int j=0; l.length>j; j++){
+            ema.addToRear(l[j]);
+        }
+        this.lista=ema;
     }
 
-   /* public void ordenatu(){
-        quickSort(this.lista,0,this.kopurua-1);
-    }*/
-
-    /*private void quickSort(Aktorea[] lista,int hasiera, int bukaera){
+    private void quickSort(Aktorea[] lista,int hasiera, int bukaera){
         if(hasiera<bukaera){
             int indizeaZatiketa=zatiketa(lista,hasiera,bukaera);
             if(indizeaZatiketa>hasiera){
@@ -71,9 +75,9 @@ public class ListaAktoreak {
                 quickSort(lista,indizeaZatiketa,bukaera);
             }
         }
-    }*/
+    }
 
-    /*/**
+    /**
      * Zatiketa egiteko, pibotea ausaz aukeratzen da. Bestela, hasieratik hasten bada beti, lista ordenatua pasatzen
      * badiogu, O(n^2) bihurtzen da algoritmoaren kostua.
      * @param lista
@@ -81,7 +85,7 @@ public class ListaAktoreak {
      * @param j
      * @return
      */
-    /*private int zatiketa(Aktorea[] lista,int i,int j){
+    private int zatiketa(Aktorea[] lista,int i,int j){
         int random= (int)(Math.random()*(j-i+1))+i;
         Aktorea pibotea = lista[random];
         int ezkerra=i;
@@ -98,13 +102,13 @@ public class ListaAktoreak {
             trukatu(lista,random,ezkerra);
         }
         return ezkerra;
-    }*/
+    }
 
-    /*private void trukatu(Aktorea[] lista,int i, int j){
+    private void trukatu(Aktorea[] lista,int i, int j){
         Aktorea lag=lista[i];
         lista[i]=lista[j];
         lista[j]=lag;
-    }*/
+    }
 
     public ListaAktoreak pelikularenAktoreak(Pelikula pPelikula) {
         ListaAktoreak listAkt = new ListaAktoreak();
