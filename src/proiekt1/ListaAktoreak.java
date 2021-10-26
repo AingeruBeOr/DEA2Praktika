@@ -45,23 +45,16 @@ public class ListaAktoreak {
      * Kostu-funtzioa O(n*log_2(n)) izango da; non n, aktoreen kopurua den. Datu kopurua hain handia denez,
      * ezin da erabili O(n^2) kostu funtzioa dute algoritmorik denbora gehiegi behar izango zuketeelako.
      */
-
-    public OrderedDoubleLinkedList ordenatu(){
+    public OrderedDoubleLinkedList<Aktorea> ordenatuBananBanan(){
         OrderedDoubleLinkedList<Aktorea> ema=new OrderedDoubleLinkedList<>();
-        mergeSort(lista, 0, (lista.size())-1));
-        return ema;
-    }
-
-   /* public void merge(DoubleLinkedList<T> zerrenda){
-        // KODEA OSATU ETA KOSTUA KALKULATU
-
-    }*/
-    private void mergeSort(DoubleLinkedList<Aktorea> z, int hasiera, int bukaera){
-        if (hasiera<bukaera){
-            mergeSort(z, hasiera, (hasiera+bukaera)/2);
-            mergeSort(z, ((hasiera+bukaera)/2)+1, bukaera);
-            bateratze(z, hasiera, (hasiera+bukaera)/2, bukaera); //TODO ni idea
+        Node<Aktorea> unekoa= lista.getLast().next;
+        boolean lehena=true;
+        while(unekoa.next!= lista.getLast().next||lehena){
+            lehena =false;
+            ema.add(unekoa.data);
+            unekoa=unekoa.next;
         }
+        return ema;
     }
 
    /* public void ordenatu(){
