@@ -1,6 +1,6 @@
 import java.util.Iterator;
-
 import listasSimples.*;
+
 public class ProbaDoubleLinkedList {
 
 	public static void adabegiakInprimatu(UnorderedDoubleLinkedList<Integer> l) {

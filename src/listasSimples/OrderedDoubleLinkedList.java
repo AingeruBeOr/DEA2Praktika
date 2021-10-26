@@ -4,39 +4,37 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 
 	/**
 	 * Pasatzen zaion elementua ordenean gehituko du zerrendan.
+	 * Aurrebaldintza: elem ez da null izango
 	 * @param elem
 	 */
 	public void add(T elem){
 		// KODEA OSATU ETA KOSTUA KALKULATU
-		if (elem!=null){ //TODO beharrezko da hau konprobatzea
-			Node<T> berria= new Node<>(elem);
-			if (last==null){	//orain arte lista hutsa
-				last=berria;
-				last.next=last;	//Node<T>-ren atrib eguneratu
-				last.prev=last;
-			}else{
-				Node<T> unekoa=last.next;
-				Node<T> aurrekoa;
-				boolean pasa=false;
-				while((unekoa!=last|| !pasa) && unekoa.data.compareTo(elem) <=0  ){	//unekoa-elem
-					pasa=true;
-					unekoa=unekoa.next;
-				}
-				if (unekoa==last && unekoa.data.compareTo(elem) <=0){	//azken posizioan sartu behar //last-elem-unekoa
-					aurrekoa=unekoa;
-					unekoa=unekoa.next;	//first dagoen elem hartu
-					last=berria;
-				}else{	// aurrekoa-elem-unekoa
-					aurrekoa= unekoa.prev;
-				}
-				aurrekoa.next=berria;
-				berria.prev=aurrekoa;
-				berria.next=unekoa;
-				unekoa.prev=berria;
+		Node<T> berria= new Node<>(elem);
+		if (last==null){	//orain arte lista hutsa
+			last=berria;
+			last.next=last;	//Node<T>-ren atrib eguneratu
+			last.prev=last;
+		}else{
+			Node<T> unekoa=last.next;
+			Node<T> aurrekoa;
+			boolean pasa=false;
+			while((unekoa!=last|| !pasa) && unekoa.data.compareTo(elem) <=0  ){	//unekoa-elem
+				pasa=true;
+				unekoa=unekoa.next;
 			}
-			count++;
+			if (unekoa==last && unekoa.data.compareTo(elem) <=0){	//azken posizioan sartu behar //last-elem-unekoa
+				aurrekoa=unekoa;
+				unekoa=unekoa.next;	//first dagoen elem hartu
+				last=berria;
+			}else{	// aurrekoa-elem-unekoa
+				aurrekoa= unekoa.prev;
+			}
+			aurrekoa.next=berria;
+			berria.prev=aurrekoa;
+			berria.next=unekoa;
+			unekoa.prev=berria;
 		}
-
+		count++;
 	}
 
 	/**
