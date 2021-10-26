@@ -1,5 +1,8 @@
 package proiekt1;
 
+import listasSimples.DoubleLinkedList;
+import listasSimples.Node;
+import listasSimples.OrderedDoubleLinkedList;
 import listasSimples.UnorderedDoubleLinkedList;
 
 import java.io.BufferedWriter;
@@ -42,9 +45,28 @@ public class ListaAktoreak {
      * Kostu-funtzioa O(n*log_2(n)) izango da; non n, aktoreen kopurua den. Datu kopurua hain handia denez,
      * ezin da erabili O(n^2) kostu funtzioa dute algoritmorik denbora gehiegi behar izango zuketeelako.
      */
-    public void ordenatu(){
-        quickSort(this.lista,0,this.kopurua-1);
+
+    public OrderedDoubleLinkedList ordenatu(){
+        OrderedDoubleLinkedList<Aktorea> ema=new OrderedDoubleLinkedList<>();
+        mergeSort(lista, 0, (lista.size())-1));
+        return ema;
     }
+
+   /* public void merge(DoubleLinkedList<T> zerrenda){
+        // KODEA OSATU ETA KOSTUA KALKULATU
+
+    }*/
+    private void mergeSort(DoubleLinkedList<Aktorea> z, int hasiera, int bukaera){
+        if (hasiera<bukaera){
+            mergeSort(z, hasiera, (hasiera+bukaera)/2);
+            mergeSort(z, ((hasiera+bukaera)/2)+1, bukaera);
+            bateratze(z, hasiera, (hasiera+bukaera)/2, bukaera); //TODO ni idea
+        }
+    }
+
+   /* public void ordenatu(){
+        quickSort(this.lista,0,this.kopurua-1);
+    }*/
 
     /*private void quickSort(Aktorea[] lista,int hasiera, int bukaera){
         if(hasiera<bukaera){

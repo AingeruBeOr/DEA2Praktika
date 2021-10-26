@@ -18,6 +18,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		deskr = "";
 		count = 0;
 	}
+	public Node<T> getLast(){return this.last;}
 	
 	public void setDeskr(String izena) {
 	  this.deskr = izena;

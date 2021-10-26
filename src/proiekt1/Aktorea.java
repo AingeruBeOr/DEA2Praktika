@@ -1,10 +1,14 @@
 package proiekt1;
 
 public class Aktorea implements Comparable<Aktorea>{
+    private Aktorea next;
+    private Aktorea prev;
     private final String izena;
     private ListaPelikulak pelikulak;
 
     public Aktorea(String pIzen) {
+        next=null;
+        prev=null;
         this.izena=pIzen;
         this.pelikulak=new ListaPelikulak();
     }

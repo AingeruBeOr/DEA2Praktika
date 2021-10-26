@@ -1,6 +1,10 @@
 package listasSimples;
 
 public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements UnorderedListADT<T> {
+
+	public UnorderedDoubleLinkedList(){
+		super();
+	}
 	
 	public void addToFront(T elem) { // hasieran gehitu
 		// KODEA OSATU ETA KOSTUA KALKULATU
