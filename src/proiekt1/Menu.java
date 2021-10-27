@@ -102,9 +102,8 @@ public class Menu {
                     String eran3=stringIrakurri("Sartu aktorearen izena (abizena, izena)");
                     if(lA.containsKey(eran3)) {
                         Aktorea akt = lA.get(eran3);
-                        akt.lortuAktorearenPeli();
                         //System.out.println(eran3+" aktorearen pelikulak hauek dira:");
-                        //akt.lortuAktorearenPeli().inprimatu();
+                        akt.lortuAktorearenPeli();//.inprimatu();
                     }
                     else System.out.println("Ez da exisititzen aktorerik izen horrekin.");
                     break;

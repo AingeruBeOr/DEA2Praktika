@@ -1,8 +1,5 @@
 package proiekt1;
 
-import listasSimples.DoubleLinkedList;
-import listasSimples.Node;
-import listasSimples.OrderedDoubleLinkedList;
 import listasSimples.UnorderedDoubleLinkedList;
 
 import java.io.BufferedWriter;
@@ -21,8 +18,9 @@ public class ListaAktoreak {
 
 
     /*public void inprimatu(){
-        for (int i=0; i<kopurua; i++){
-            System.out.println(lista[i].getIzena());
+        Iterator<Aktorea> itr = this.lista.iterator();
+        while(itr.hasNext()){
+            System.out.println(itr.next().getIzena());
         }
     }*/
 
@@ -37,7 +35,7 @@ public class ListaAktoreak {
      * @return ezabatu den Aktorea bueltatzen da.
      */
     public Aktorea aktoreaEzabatu(Aktorea pAktore) {
-        return (Aktorea) this.lista.remove(pAktore);
+        return this.lista.remove(pAktore);
     }
 
     /**
@@ -135,7 +133,7 @@ public class ListaAktoreak {
         try{
             fitxategia=new FileWriter("aktoreenzerrenda.txt",false); //append=false eginez, ez da azkenean idazten; dena ezabatzen da eta berriro idazten da
             BufferedWriter bfwriter=new BufferedWriter(fitxategia);
-            Iterator<Aktorea> itr = this.lista.iterator();//TODO
+            Iterator<Aktorea> itr = this.lista.iterator();
             Aktorea unekoa;
             while(itr.hasNext()){
                 unekoa = itr.next();
