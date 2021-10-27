@@ -116,21 +116,21 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public boolean contains(T elem) {
 	// Egiazkoa bueltatuko du aurkituz gero, eta false bestela
-		      		// KODEA OSATU ETA KOSTUA KALKULATU
+		// KODEA OSATU ETA KOSTUA KALKULATU
 		boolean emaitza=false;
-		      if (!isEmpty() && elem != null) {
-				  Node<T> unekoa= last;
-				  boolean barruan=false;
-				  while ((unekoa!=last || !barruan) && !emaitza){
-					  barruan=true;
-					  if(unekoa.data.equals(elem)){
-						  emaitza= true;
-					  }
-					 unekoa=unekoa.next;
-				  }
-			  }
-			  return emaitza;
-		   }
+			if (!isEmpty() && elem != null) {
+				Node<T> unekoa= last;
+				boolean barruan=false;
+				while ((unekoa!=last || !barruan) && !emaitza){
+					barruan=true;
+					if(unekoa.data.equals(elem)){
+						emaitza= true;
+					}
+					unekoa=unekoa.next;
+				}
+			}
+			return emaitza;
+	}
 
 	public T find(T elem) {
 		// KODEA OSATU ETA KOSTUA KALKULATU
