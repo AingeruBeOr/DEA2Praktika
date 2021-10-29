@@ -59,7 +59,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				last.next=last.next.next;//last eguneratu
 				last.next.prev=last;
 			}
-			count--; //count atrib eguneratu
+			count--; //count atrib	 eguneratu
 		}
 		return emaitza;
     }
@@ -88,8 +88,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				aurrekoa = unekoa.prev;
 				unekoa.next.prev=aurrekoa;
 				aurrekoa.next=unekoa.next;
+				count--;
 			}
-			count--;
 		}
 		return emaitza;
 	}
